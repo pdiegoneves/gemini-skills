@@ -1,0 +1,9 @@
+report-trader-analisys:
+    name: report-trader-analisys
+    description: Essa skils devera ser utilizada para avaliar os relatórios financeiros do sistema de trader
+quant-code-reviewe:
+    name: quant-code-reviewer
+    description: Avalia código de robôs de trading focado em performance, risco e sobrevivência em Live Trading no MT5.
+start-django-project:
+    name: start-django-project
+    description: Use essa skill sempre que precisar criar um projeto django
