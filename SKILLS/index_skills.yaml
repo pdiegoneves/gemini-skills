@@ -7,3 +7,6 @@ quant-code-reviewe:
 start-django-project:
     name: start-django-project
     description: Use essa skill sempre que precisar criar um projeto django
+universal-planner:
+    name: universal-planner
+    description: "Use sempre que precisar realizar qualquer tarefa relacionada a código."

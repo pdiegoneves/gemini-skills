@@ -1,4 +1,12 @@
-﻿# documentador
+﻿---
+name: documentacao
+description: "Use sempre que o for documentar um software."
+category: documentations
+risk: unknown
+source: my
+date_added: "2026-04-10"
+---
+# documentador
 
 ## Purpose
 Esta skill automatiza a leitura de todo o código fonte disponível na pasta onde o agente for chamado e cria uma documentação em markdown no arquivo README.md. A documentação gerada segue rigorosamente o template do arquivo modelo.md.
