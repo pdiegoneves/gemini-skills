@@ -1,66 +1,70 @@
----
-name: universal-planner
-description: "Use sempre que precisar realizar qualquer tarefa relacionada a código."
-category: planning
-risk: unknown
-source: my
-date_added: "2026-04-08"
----
+skill:
+  metadata:
+    name: universal-planner
+    description: "Use sempre que precisar realizar qualquer tarefa relacionada a código."
+    category: planning
+    risk: unknown
+    source: my
+    date_added: "2026-04-08"
 
-# Universal Planner
+  purpose: "Forçar um protocolo de planejamento padronizado e obrigatório para TODA solicitação envolvendo modificações de código ou novas implementações. Garante integridade técnica exigindo contexto profundo e quebra estruturada de tarefas antes de qualquer modificação de arquivo."
 
-## Purpose
-This skill enforces a mandatory, standardized planning protocol for **every request involving code modifications or new implementations**. It ensures technical integrity by requiring a deep understanding of context and a structured breakdown of tasks before any files are modified.
+  trigger_conditions:
+    mandatory_usage: "ESTA SKILL É OBRIGATÓRIA E SEU WORKFLOW DEVE SER SEGUIDO SE A SOLICITAÇÃO ENVOLVER:"
+    scenarios:
+      - "Implementação de novas features (funcionalidades)."
+      - "Correção de bugs ou resolução de erros."
+      - "Refatoração de código existente."
+      - "Modificação de arquivos de configuração."
+      - "Escrita ou atualização de testes."
 
-## Mandatory Usage
-**CRITICAL:** This skill MUST be activated and its workflow followed for ANY request that involves:
-- Implementing new features
-- Fixing bugs or resolving errors
-- Refactoring existing code
-- Modifying configuration files
-- Writing tests
+  constraints:
+    - "NEVER_SKIP_PLANNING: A fase de planejamento não pode ser ignorada sob nenhuma hipótese."
+    - "NO_MODIFICATIONS_BEFORE_STEP_4: É terminantemente proibido modificar qualquer arquivo no disco antes de chegar à fase de Execução Atômica."
+    - "TASK_SIZE: As tarefas devem ser granulares o suficiente para serem concluídas em 1 a 2 turnos de interação."
+    - "STATE_TRACKING_REQUIRED: O status do checklist de tarefas deve ser atualizado e impresso em TODAS as mensagens durante a fase de Execução."
 
-## Planning Workflow
+  workflow:
+    step_1_context:
+      name: "Context Understanding (Entendimento)"
+      actions:
+        - "Analisar a base de código existente relacionada à solicitação."
+        - "Identificar dependências, módulos afetados e possíveis efeitos colaterais."
+        - "Verificar suposições lendo os arquivos relevantes ou executando comandos de descoberta."
 
-Before touching any code, the agent MUST follow these four steps:
+    step_2_specification:
+      name: "Specification (Especificação)"
+      actions:
+        - "Definir claramente O QUE será executado."
+        - "Listar os resultados esperados e os requisitos técnicos."
+        - "Definir os critérios exatos para considerar a implementação como 'sucesso'."
 
-### 1. Context Understanding
-- Analyze the existing codebase related to the request.
-- Identify dependencies, affected modules, and potential side effects.
-- Verify assumptions by reading relevant files or running discovery commands.
+    step_3_planning:
+      name: "Complete Planning (Planejamento)"
+      actions:
+        - "Projetar a abordagem arquitetural."
+        - "Selecionar as ferramentas e bibliotecas necessárias (verificando sua disponibilidade)."
+        - "Definir a estratégia de testes que será utilizada para validação."
 
-### 2. Specification
-- Clearly define WHAT will be performed.
-- List the expected outcomes and technical requirements.
-- Identify the criteria for a "successful" implementation.
+    step_4_execution:
+      name: "Atomic Task Execution (Execução Atômica)"
+      actions:
+        - "Quebrar o plano em tarefas pequenas, independentes e verificáveis."
+        - "Utilizar estritamente os marcadores de status abaixo em cada resposta para rastrear o progresso."
+      status_markers:
+        pending: "- [ ] Tarefa Pendente: Ainda não iniciada."
+        in_progress: "- [/] Em Andamento: Tarefa atualmente em execução. Marcar ao iniciar o turno."
+        completed: "- [X] Concluída: Tarefa finalizada e verificada. Marcar imediatamente após o sucesso."
+        error: "- [-] Erro/Falha: Ação obrigatória -> PARE a execução atual, inicie uma nova fase de planejamento focada exclusivamente na correção do erro e retome as tarefas originais apenas quando resolvido."
 
-### 3. Complete Planning
-- Design the architectural approach.
-- Select necessary tools and libraries (verifying their availability).
-- Define the testing strategy to be used for validation.
-
-### 4. Atomic Task Execution
-- Break down the plan into small, independent, and verifiable tasks.
-- Use the following status markers to track progress in every response:
-  - `[ ]` **Pending Task**: Not yet started.
-  - `[/]` **In Progress**: Task currently being executed. Mark this when starting.
-  - `[X]` **Completed**: Task finished and verified. Mark this immediately after completion.
-  - `[-]` **Error/Failed**: Task resulted in an error. **Action:** Stop current execution, initiate a new planning phase focused on correcting the error, then resume the original tasks once resolved.
-
-## Examples
-
-### Trigger: "Fix the login error"
-1. **Context**: I found that the `AuthService` is throwing a 401 due to a missing header.
-2. **Spec**: Add the `X-API-KEY` header to all outgoing requests in `apps/common/services`.
-3. **Plan**: Modify `api_client.py`, update tests, and run integration suite.
-4. **Tasks**:
-   - [X] Read `apps/common/services/api_client.py` to identify header insertion point.
-   - [/] Update `headers` dictionary in `ApiClient.request`.
-   - [ ] Add unit test in `tests/test_api_client.py`.
-   - [ ] Run `pytest tests/test_api_client.py`.
-
-## Rules
-- Never skip the planning phase.
-- Never modify files until Step 4 (Atomic Task Execution).
-- Tasks must be small enough to be completed in 1-2 turns.
-- Always update the task list status in every message during the Execution phase.
+  example_usage:
+    trigger_prompt: "Fix the login error"
+    simulated_workflow:
+      context: "Identificado que o 'AuthService' está lançando 401 devido a um cabeçalho ausente."
+      spec: "Adicionar o cabeçalho 'X-API-KEY' a todas as requisições de saída em 'apps/common/services'."
+      plan: "Modificar 'api_client.py', atualizar os testes unitários e rodar a suíte de integração."
+      tasks:
+        - "- [X] Ler 'apps/common/services/api_client.py' para identificar o ponto de injeção de headers."
+        - "- [/] Atualizar o dicionário 'headers' dentro de 'ApiClient.request'."
+        - "- [ ] Adicionar teste unitário em 'tests/test_api_client.py'."
+        - "- [ ] Executar 'pytest tests/test_api_client.py'."

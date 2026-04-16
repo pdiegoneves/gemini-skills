@@ -6,37 +6,62 @@ risk: unknown
 source: my
 date_added: "2026-04-10"
 ---
-# documentador
+skill:
+  metadata:
+    name: documentacao
+    alias: documentador
+    description: "Use sempre que for documentar um software."
+    category: documentations
+    risk: unknown
+    source: my
+    date_added: "2026-04-10"
 
-## Purpose
-Esta skill automatiza a leitura de todo o código fonte disponível na pasta onde o agente for chamado e cria uma documentação em markdown no arquivo README.md. A documentação gerada segue rigorosamente o template do arquivo modelo.md.
+  purpose: "Automatizar a leitura de todo o código-fonte na pasta de trabalho para gerar uma documentação em markdown no 'README.md', baseando-se estritamente em um template."
 
-## Mandatory Workflow
+  resources:
+    inputs:
+      - "Código-fonte no diretório de trabalho local."
+    templates:
+      - "templates/readme_model.md"
+    outputs:
+      - "doc_plan.md"
+      - "README.md"
 
-Sempre que ativada, você DEVE seguir exatamente este fluxo:
+  constraints:
+    - "NON_GOAL_INVENTION: Nunca invente regras de negócio ou funcionalidades que não foram explicitamente encontradas no código-fonte lido."
+    - "TEMPLATE_STRICTNESS: O README gerado deve refletir exatamente as seções contidas em 'templates/readme_model.md'."
 
-### Passo 1: Descoberta e Estruturação
-1. O sistema deve **listar todos os módulos e arquivos** disponíveis na pasta de trabalho.
-2. Ler os arquivos para **entender a estrutura**.
-3. **Definir por onde começar** e qual a **sequência lógica** que deve seguir para a documentação.
+  workflow:
+    step_1_discovery:
+      name: "Descoberta e Estruturação"
+      actions:
+        - "Listar todos os módulos e arquivos disponíveis na pasta atual."
+        - "Ler o conteúdo dos arquivos para mapear a estrutura do projeto."
+        - "Definir um ponto de partida lógico e a sequência de documentação."
+    
+    step_2_planning:
+      name: "Criação do Plano de Ação"
+      actions:
+        - "Gerar o arquivo 'doc_plan.md' físico no disco."
+        - "Estruturar o plano como um checklist de tarefas atômicas e iterativas."
+      syntax_rules:
+        pending: "- [ ] Tarefa pendente"
+        in_progress: "- [/] Tarefa em andamento"
+        completed: "- [X] Tarefa concluída"
 
-### Passo 2: Criação do Plano de Ação (doc_plan.md)
-1. Crie o arquivo doc_plan.md no formato de checklist de tarefas atômicas, iterativas e autoexplicativas.
-   Use marcadores de markdown:
-   - [ ] Tarefa pendente
-   - [/] Tarefa em andamento
-   - [X] Tarefa concluída
+    step_3_approval:
+      name: "Confirmação do Usuário (OBRIGATÓRIO)"
+      actions:
+        - "Após salvar 'doc_plan.md', PAUSE a execução."
+        - "Apresente o plano e solicite a confirmação do usuário."
+        - "BLOCKER: Não inicie a escrita do README.md sem receber o 'ok' do usuário."
 
-### Passo 3: Confirmação do Usuário
-**OBRIGATÓRIO:** Com o arquivo doc_plan.md gravado no disco, **solicite a confirmação** do usuário para iniciar a implementação. NÃO prossiga sem o "ok" do usuário.
-
-### Passo 4: Implementação Passo a Passo
-1. Após a aprovação, implemente e conduza a documentação do README.md **passo a passo**.
-2. Siga as seções definidas no template `templates\readme_model.md`:
-3. A cada passo concluído, atualize o checklist no prompt e adicione o carimbo de data e hora no padrão exato YYYY-MM-DD HH:MM:SS.
-   Exemplo: - [X] Ler arquivo X e documentar Regras de Negócio -> 2026-04-10 10:50:00
-4. Mostre sempre o progresso iterativo.
-
-## Non-Goals
-- Nunca invente regras de negócio que não forem encontradas no código
-
+    step_4_implementation:
+      name: "Implementação Passo a Passo"
+      actions:
+        - "Ao receber aprovação, escreva o 'README.md' iterativamente, seção por seção do template."
+        - "Após finalizar cada etapa, atualize o 'doc_plan.md' e o prompt com a tarefa concluída."
+      timestamp_requirement:
+        format: "YYYY-MM-DD HH:MM:SS"
+        example: "- [X] Ler arquivo X e documentar Regras de Negócio -> 2026-04-10 10:50:00"
+      output_behavior: "Mostre o progresso ao usuário a cada iteração, mantendo transparência do processo."
