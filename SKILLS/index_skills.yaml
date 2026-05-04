@@ -1,12 +1,15 @@
-report-trader-analisys:
-    name: report-trader-analisys
-    description: Essa skils devera ser utilizada para avaliar os relatórios financeiros do sistema de trader
-quant-code-reviewe:
-    name: quant-code-reviewer
-    description: Avalia código de robôs de trading focado em performance, risco e sobrevivência em Live Trading no MT5.
 start-django-project:
     name: start-django-project
     description: Use essa skill sempre que precisar criar um projeto django
 universal-planner:
     name: universal-planner
     description: "Use sempre que precisar realizar qualquer tarefa relacionada a código."
+documentacao:
+    name: documentacao
+    description: "Use sempre que o for documentar um software."
+technical-design-doc-creator:
+    name: technical-design-doc-creator
+    description: Creates comprehensive Technical Design Documents (TDDOC) with mandatory and optional sections through interactive discovery. Use when user asks to "write a design doc", "create a TDDOC", "technical spec", "architecture document", "RFC", "design proposal", or needs to document a technical decision before implementation. Do NOT use for README files, API docs, or general documentation (use docs-writer instead).
+web-security-django:
+    name: web-security-django
+    description: "Especialista em auditoria de segurança e performance para Django. Detecta arquitetura e aplica ruff."

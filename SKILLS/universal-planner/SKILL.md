@@ -4,7 +4,7 @@ skill:
     description: "Use sempre que precisar realizar qualquer tarefa relacionada a código."
     category: planning
     risk: unknown
-    source: my
+    source: pdseven
     date_added: "2026-04-08"
 
   purpose: "Forçar um protocolo de planejamento padronizado e obrigatório para TODA solicitação envolvendo modificações de código ou novas implementações. Garante integridade técnica exigindo contexto profundo e quebra estruturada de tarefas antes de qualquer modificação de arquivo."
