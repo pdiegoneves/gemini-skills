@@ -4,7 +4,7 @@ skill:
     description: "Use sempre que precisar realizar qualquer tarefa relacionada a código."
     category: planning
     risk: unknown
-    source: pdseven
+    source: my
     date_added: "2026-04-08"
 
   purpose: "Forçar um protocolo de planejamento padronizado e obrigatório para TODA solicitação envolvendo modificações de código ou novas implementações. Garante integridade técnica exigindo contexto profundo e quebra estruturada de tarefas antes de qualquer modificação de arquivo."
@@ -20,7 +20,7 @@ skill:
 
   constraints:
     - "NEVER_SKIP_PLANNING: A fase de planejamento não pode ser ignorada sob nenhuma hipótese."
-    - "NO_MODIFICATIONS_BEFORE_STEP_4: É terminantemente proibido modificar qualquer arquivo no disco antes de chegar à fase de Execução Atômica."
+    - "NO_MODIFICATIONS_BEFORE_STEP_5: É terminantemente proibido modificar qualquer arquivo no disco antes de chegar à fase de Execução Atômica."
     - "TASK_SIZE: As tarefas devem ser granulares o suficiente para serem concluídas em 1 a 2 turnos de interação."
     - "STATE_TRACKING_REQUIRED: O status do checklist de tarefas deve ser atualizado e impresso em TODAS as mensagens durante a fase de Execução."
 
@@ -32,21 +32,27 @@ skill:
         - "Identificar dependências, módulos afetados e possíveis efeitos colaterais."
         - "Verificar suposições lendo os arquivos relevantes ou executando comandos de descoberta."
 
-    step_2_specification:
+    step_2_research:
+      name: "Market Research (Pesquisa de Mercado)"
+      actions:
+        - "Pesquisar as melhores práticas de mercado e padrões de design para a solicitação dentro do contexto tecnológico atual."
+        - "Validar se as abordagens pretendidas alinham-se com recomendações de segurança e performance estabelecidas pela comunidade."
+
+    step_3_specification:
       name: "Specification (Especificação)"
       actions:
-        - "Definir claramente O QUE será executado."
+        - "Definir claramente O QUE será executado, baseando-se no contexto e na pesquisa realizada."
         - "Listar os resultados esperados e os requisitos técnicos."
         - "Definir os critérios exatos para considerar a implementação como 'sucesso'."
 
-    step_3_planning:
+    step_4_planning:
       name: "Complete Planning (Planejamento)"
       actions:
         - "Projetar a abordagem arquitetural."
         - "Selecionar as ferramentas e bibliotecas necessárias (verificando sua disponibilidade)."
         - "Definir a estratégia de testes que será utilizada para validação."
 
-    step_4_execution:
+    step_5_execution:
       name: "Atomic Task Execution (Execução Atômica)"
       actions:
         - "Quebrar o plano em tarefas pequenas, independentes e verificáveis."
@@ -61,6 +67,7 @@ skill:
     trigger_prompt: "Fix the login error"
     simulated_workflow:
       context: "Identificado que o 'AuthService' está lançando 401 devido a um cabeçalho ausente."
+      research: "Pesquisado padrões de autenticação JWT e verificado que o header 'X-API-KEY' é a prática padrão para este provedor."
       spec: "Adicionar o cabeçalho 'X-API-KEY' a todas as requisições de saída em 'apps/common/services'."
       plan: "Modificar 'api_client.py', atualizar os testes unitários e rodar a suíte de integração."
       tasks:
