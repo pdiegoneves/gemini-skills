@@ -4,8 +4,8 @@ start-django-project:
 universal-planner:
     name: universal-planner
     description: "Use sempre que precisar realizar qualquer tarefa relacionada a código."
-documentacao:
-    name: documentacao
+documentar:
+    name: documentar
     description: "Use sempre que o for documentar um software."
 technical-design-doc-creator:
     name: technical-design-doc-creator

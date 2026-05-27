@@ -1,21 +1,8 @@
-﻿---
-name: documentacao
-description: "Use sempre que for criar o README.md de um software, baseando-se no design técnico (TDDOC)."
-category: documentations
-risk: unknown
-source: pdseven
-date_added: "2026-04-10"
+---
+name: documentar
+description: Use sempre que for criar o README.md de um software, baseando-se no design técnico (TDDOC).
 ---
 skill:
-  metadata:
-    name: documentacao
-    alias: documentador
-    description: "Use sempre que for criar o README.md de um software, baseando-se no design técnico (TDDOC)."
-    category: documentations
-    risk: unknown
-    source: my
-    date_added: "2026-04-10"
-
   purpose: "Automatizar a geração de documentação em markdown no 'README.md', utilizando o Documento de Design Técnico (TDDOC) como base de conhecimento estruturada, seguindo estritamente um template predefinido."
 
   resources:

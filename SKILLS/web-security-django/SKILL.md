@@ -1,6 +1,6 @@
 ---
 name: web-security-django
-description: "Especialista em auditoria de segurança e performance para Django. Detecta arquitetura e aplica ruff."
+description: Especialista em auditoria de segurança e performance para Django. Detecta arquitetura e aplica ruff.
 category: security
 risk: low
 source: my
