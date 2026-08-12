@@ -341,3 +341,4 @@ Demais cenários:
 |------|--------|-----------|--------|
 | 2026-08-11 | (repositório) | Criação da documentação técnica (`README.md`) | Documentar objetivo, arquitetura, pipeline de skills e instalação em Claude Code e Antigravity |
 | 2026-08-11 | Instalação / Troubleshooting | Guia de instalação (anatomia da skill, caminhos por projeto e global, symlink, boas práticas e tabela de troubleshooting) consolidado no `README.md` | `docs/GUIA-INSTALACAO-SKILLS.md` foi removido; todo o conteúdo passou a viver em um único arquivo |
+| 2026-08-12 | technical-documentation | Removida a skill duplicada `tdoc`; documentação técnica passa a ser gerada apenas pela skill `technical-documentation` | Eliminar redundância — as duas skills faziam a mesma coisa; `technical-documentation` já cobre os gatilhos "tdoc"/"tecdoc" na sua `description` |
